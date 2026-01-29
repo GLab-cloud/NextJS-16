@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { getSimilarEventsBySlug } from "@/app/event.actions";
+import { getSimilarEventsBySlug } from "@/app/actions";
 import Image from "next/image";
 import BookEvent from "@/components/BookEvent";
 import EventCard from "@/components/EventCard";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { createBooking } from "@/app/booking.actions";
+import { createBooking } from "@/app/actions";
 import posthog from "posthog-js";
 
 const BookEvent = ({ eventId, slug }: { eventId: string; slug: string }) => {
