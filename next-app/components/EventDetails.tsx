@@ -92,7 +92,7 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
 
   const bookings = 10;
 
-  const similarEvents: IEvent[] = await getSimilarEventsBySlug(slug);
+  const similarEvents = await getSimilarEventsBySlug(slug);
 
   return (
     <section id="event">
@@ -167,7 +167,7 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
         <Suspense fallback={<div>Loading similar events...</div>}>
           <div className="events">
             {similarEvents.length > 0 &&
-              similarEvents.map((similarEvent: IEvent) => (
+              similarEvents.map((similarEvent) => (
                 <EventCard key={similarEvent.title} {...similarEvent} />
               ))}
           </div>
