@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { IEvent } from "@/database";
 import { getSimilarEventsBySlug } from "@/lib/actions/event.actions";
@@ -164,12 +164,14 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
 
       <div className="flex w-full flex-col gap-4 pt-20">
         <h2>Similar Events</h2>
-        <div className="events">
-          {similarEvents.length > 0 &&
-            similarEvents.map((similarEvent: IEvent) => (
-              <EventCard key={similarEvent.title} {...similarEvent} />
-            ))}
-        </div>
+        <Suspense fallback={<div>Loading similar events...</div>}>
+          <div className="events">
+            {similarEvents.length > 0 &&
+              similarEvents.map((similarEvent: IEvent) => (
+                <EventCard key={similarEvent.title} {...similarEvent} />
+              ))}
+          </div>
+        </Suspense>
       </div>
     </section>
   );
