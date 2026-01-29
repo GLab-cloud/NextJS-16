@@ -5,41 +5,41 @@ import { cacheLife } from "next/cache";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
-import events from "@/lib/constants";
+// import events from "@/lib/constants";
 
 // const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const Page = async () => {
   "use cache";
   cacheLife("hours"); // fake
-  // let events;
-  // try {
-  //   const request = await fetch(
-  //     process.env.NEXT_PUBLIC_BASE_URL + "/api/events",
-  //     {
-  //       // next: { revalidate: 60 },
-  //       method: "GET",
-  //       // cache: "no-store",
-  //     }
-  //   );
+  let events;
+  try {
+    const request = await fetch(
+      process.env.NEXT_PUBLIC_BASE_URL + "/api/events",
+      {
+        // next: { revalidate: 60 },
+        method: "GET",
+        // cache: "no-store",
+      }
+    );
 
-  //   if (!request.ok) {
-  //     if (request.status === 404) {
-  //       return notFound();
-  //     }
-  //     throw new Error(`Failed to fetch events: ${request.statusText}`);
-  //   }
+    if (!request.ok) {
+      if (request.status === 404) {
+        return notFound();
+      }
+      throw new Error(`Failed to fetch events: ${request.statusText}`);
+    }
 
-  //   const response = await request.json();
-  //   events = response.events;
+    const response = await request.json();
+    events = response.events;
 
-  //   if (!events) {
-  //     return notFound();
-  //   }
-  // } catch (error) {
-  //   console.error("Error fetching events:", error);
-  //   return notFound();
-  // }
+    if (!events) {
+      return notFound();
+    }
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return notFound();
+  }
 
   return (
     <main>
