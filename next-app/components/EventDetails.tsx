@@ -167,7 +167,7 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
         <Suspense fallback={<div>Loading similar events...</div>}>
           <div className="events">
             {similarEvents.length > 0 &&
-              similarEvents.map((similarEvent) => (
+              similarEvents.map((similarEvent: IEvent) => (
                 <EventCard key={similarEvent.title} {...similarEvent} />
               ))}
           </div>
