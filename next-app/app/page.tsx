@@ -11,7 +11,7 @@ import events from "@/lib/constants";
 
 const Page = async () => {
   "use cache";
-  cacheLife("hours");
+  cacheLife("hours"); // fake
   // let events;
   // try {
   //   const request = await fetch(
