@@ -14,14 +14,11 @@ const Page = async () => {
   cacheLife("hours"); // fake
   let events;
   try {
-    const request = await fetch(
-      process.env.NEXT_PUBLIC_BASE_URL + "/api/events",
-      {
-        // next: { revalidate: 60 },
-        method: "GET",
-        // cache: "no-store",
-      }
-    );
+    const request = await fetch("https://next-js-16-mu.vercel.app/api/events", {
+      // next: { revalidate: 60 },
+      method: "GET",
+      // cache: "no-store",
+    });
 
     if (!request.ok) {
       if (request.status === 404) {
