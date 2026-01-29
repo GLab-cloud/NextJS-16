@@ -52,7 +52,7 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
 
   let event;
   try {
-    const request = await fetch(`${BASE_URL}/api/events/${slug}`, {
+    const request = await fetch(`/api/events/${slug}`, {
       next: { revalidate: 60 },
     });
 
@@ -92,7 +92,7 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
 
   const bookings = 10;
 
-  const similarEvents = await getSimilarEventsBySlug(slug);
+  const similarEvents: IEvent[] = await getSimilarEventsBySlug(slug);
 
   return (
     <section id="event">
@@ -166,8 +166,8 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
         <h2>Similar Events</h2>
         <div className="events">
           {similarEvents.length > 0 &&
-            similarEvents.map((similarEvent) => (
-              <EventCard title={""} image={""} slug={""} location={""} date={""} time={""} key={similarEvent.title} {...similarEvent} />
+            similarEvents.map((similarEvent: IEvent) => (
+              <EventCard key={similarEvent.title} {...similarEvent} />
             ))}
         </div>
       </div>
