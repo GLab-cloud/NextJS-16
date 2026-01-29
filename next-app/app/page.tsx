@@ -12,34 +12,34 @@ import events from "@/lib/constants";
 const Page = async () => {
   "use cache";
   cacheLife("hours"); // fake
-  let events;
-  try {
-    const request = await fetch(
-      "https://dev-event-gamma.vercel.app/api/events",
-      {
-        // next: { revalidate: 60 },
-        method: "GET",
-        // cache: "no-store",
-      }
-    );
+  // let events;
+  // try {
+  //   const request = await fetch(
+  //     "https://dev-event-gamma.vercel.app/api/events",
+  //     {
+  //       // next: { revalidate: 60 },
+  //       method: "GET",
+  //       // cache: "no-store",
+  //     }
+  //   );
 
-    if (!request.ok) {
-      if (request.status === 404) {
-        return notFound();
-      }
-      throw new Error(`Failed to fetch events: ${request.statusText}`);
-    }
+  //   if (!request.ok) {
+  //     if (request.status === 404) {
+  //       return notFound();
+  //     }
+  //     throw new Error(`Failed to fetch events: ${request.statusText}`);
+  //   }
 
-    const response = await request.json();
-    events = response.events;
+  //   const response = await request.json();
+  //   events = response.events;
 
-    if (!events) {
-      return notFound();
-    }
-  } catch (error) {
-    console.error("Error fetching events:", error);
-    return notFound();
-  }
+  //   if (!events) {
+  //     return notFound();
+  //   }
+  // } catch (error) {
+  //   console.error("Error fetching events:", error);
+  //   return notFound();
+  // }
 
   return (
     <main>
