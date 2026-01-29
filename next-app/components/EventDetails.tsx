@@ -163,7 +163,7 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
       </div>
 
       <div className="flex w-full flex-col gap-4 pt-20">
-        <h2>Similar Events</h2>
+        <h2>Similar Events {similarEvents.length}</h2>
         <Suspense fallback={<div>Loading similar events...</div>}>
           <div className="events">
             {similarEvents.length > 0 &&
