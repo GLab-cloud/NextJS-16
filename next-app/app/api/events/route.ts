@@ -1,5 +1,5 @@
 import Event from "@/database/event.model";
-import connectDB from "@/lib/mongodb";
+import connectDB from "@/app/lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 
@@ -58,13 +58,19 @@ export async function POST(req: NextRequest) {
 }
 export async function GET() {
   try {
-      await connectDB();
+    await connectDB();
 
-      const events = await Event.find().sort({ createdAt: -1 });
+    const events = await Event.find().sort({ createdAt: -1 });
 
-      return NextResponse.json({ message: 'Events fetched successfully', events }, { status: 200 });
+    return NextResponse.json(
+      { message: "Events fetched successfully", events },
+      { status: 200 }
+    );
   } catch (e) {
-      return NextResponse.json({ message: 'Event fetching failed', error: e }, { status: 500 });
+    return NextResponse.json(
+      { message: "Event fetching failed", error: e },
+      { status: 500 }
+    );
   }
 }
 // a route that accepts a slug as input => return the event details
