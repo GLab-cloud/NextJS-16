@@ -52,7 +52,7 @@ const EventDetails = async ({ params }: { params: Promise<string> }) => {
 
   let event;
   try {
-    const request = await fetch(`/api/events/${slug}`, {
+    const request = await fetch(BASE_URL + "/api/events/" + slug, {
       next: { revalidate: 60 },
     });
 
