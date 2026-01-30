@@ -15,7 +15,11 @@ const nextConfig: NextConfig = {
   /* config options here */
   experimental: {
     serverActions: {
-      allowedOrigins: ["*.vercel.app", "next-js-16-eight.vercel.app"],
+      allowedOrigins: [
+        "*.vercel.app",
+        "next-js-16-eight.vercel.app",
+        "xwtjjc-3000.csb.app",
+      ],
     },
     turbopackFileSystemCacheForDev: true,
     // mcpServer: true,
