@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  typescript: {ignoreBuildErrors:true},
+  typescript: { ignoreBuildErrors: true },
   cacheComponents: true,
   images: {
     remotePatterns: [
@@ -13,7 +13,13 @@ const nextConfig: NextConfig = {
   },
   reactCompiler: true,
   /* config options here */
-  experimental: { turbopackFileSystemCacheForDev: true, mcpServer: true },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ["*.vercel.app", "next-js-16-eight.vercel.app"],
+    },
+    turbopackFileSystemCacheForDev: true,
+    mcpServer: true,
+  },
   // allowedDevOrigins:['*'],
 };
 
