@@ -15,7 +15,7 @@ const Page = async () => {
   let events;
   try {
     const request = await fetch(BASE_URL + "/api/events", {
-      // next: { revalidate: 60 },
+      next: { revalidate: 60 },
       method: "GET",
       // cache: "no-store",
     });
