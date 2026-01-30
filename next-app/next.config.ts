@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
     serverActions: {
       allowedOrigins: [
         "*.vercel.app",
-        "next-js-16-eight.vercel.app",
+        "dev-event-eight-black.vercel.app",
         "xwtjjc-3000.csb.app",
       ],
     },
